@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
@@ -42,17 +43,14 @@
     <div class="header__inner">
 
       <h1>
-        <a href="/" class="header__logo">Rese</a>
+        <a href="/" class="header__logo"><img src="storage/logo/logo.png" alt=""></a>
       </h1>
-      <button class="header__sp" id="menuButton">
-        <span class="sp-only">Menu</span>
-      </button>
       <div class="header__nav" id="navMenu">
         <button class="header__close" id="closeButton">×</button>
         <ul>
           <li><a href="{{ url('/') }}">Home</a></li>
-          <li><a href="{{ route('mypage.show') }}">Mypage</a></li>
-          <li><a href="{{ route('profile.show') }}">Profile</a></li>
+          {{-- <li><a href="{{ route('') }}">Mypage</a></li>
+          <li><a href="{{ route('') }}">Profile</a></li> --}}
           <li>
             <form action="/logout" method="POST">
               @csrf

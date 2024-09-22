@@ -1,8 +1,8 @@
-@extends('layouts.application')
+@extends('layouts.app')
 
 @section('content')
   <div class="container">
-    <h2>Login</h2>
+    <h2>ログイン</h2>
     <form action="/login" method="post" class="form">
       @csrf
       <div class="form__inner">
