@@ -1,0 +1,80 @@
+@import 'variables';
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 36px;
+}
+
+.form {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 14px;
+
+  &__inner-text {
+    margin: 30px 0;
+
+    input {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+
+  &__inner-check {
+    font-size: 12px;
+    text-align: right;
+  }
+
+  &__button {
+    margin-top: 40px;
+
+    button {
+      padding: 10px 0;
+      width: 100%;
+      border-radius: 4px;
+      border: none;
+      background-color: $base-color;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    button:hover {
+      opacity: .75;
+      transition: .3s;
+    }
+  }
+}
+
+p {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 15px;
+  a {
+    color: $link-color;
+  }
+  a:hover {
+    color: $hover-color;
+    transition: .2s;
+  }
+}
+
+@media (min-width:768px) {
+  p {
+    font-size: 18px;
+  }
+  .form {
+    font-size: 24px;
+    &__button {
+      margin-top: 60px;
+      button {
+        font-size: 26px;
+      }
+    }
+  }
+}
