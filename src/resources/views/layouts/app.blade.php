@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{ asset('css/variables.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
@@ -25,10 +26,10 @@
       </div>
     @endif
     @if (session('error'))
-    <div class="alert alert-danger">
-      {{ session('error') }}
-    </div>
-  @endif
+      <div class="alert alert-danger">
+        {{ session('error') }}
+      </div>
+    @endif
     @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -41,22 +42,25 @@
 
 
     <div class="header__inner">
-
       <h1>
         <a href="/" class="header__logo"><img src="storage/logo/logo.png" alt=""></a>
       </h1>
+      <div class="header__search">
+        <form action="/search" method="POST">
+          @csrf
+          <input type="text" placeholder="何をお探しですか？">
+        </form>
+      </div>
       <div class="header__nav" id="navMenu">
-        <button class="header__close" id="closeButton">×</button>
         <ul>
-          <li><a href="{{ url('/') }}">Home</a></li>
-          {{-- <li><a href="{{ route('') }}">Mypage</a></li>
-          <li><a href="{{ route('') }}">Profile</a></li> --}}
           <li>
             <form action="/logout" method="POST">
               @csrf
-              <button type="submit" class="logout__button">Logout</button>
+              <button type="submit" class="logout__button">ログアウト</button>
             </form>
           </li>
+          <li><a href="{{ url('/') }}" class="mypage__button">マイページ</a></li>
+          <li><a href="{{ url('/') }}" class="purchace__button">出品</a></li>
         </ul>
       </div>
     </div>
@@ -64,9 +68,6 @@
   <main>
     @yield('content')
   </main>
-  <footer class="footer">
-    <div class="footer__inner">Rese, inc.</div>
-  </footer>
   <script src="{{ asset('js/humberger.js') }}"></script>
   <script src="{{ asset('js/confirm.js') }}"></script>
 </body>
