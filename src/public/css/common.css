@@ -3,10 +3,8 @@
   padding: 0;
 }
 
-.header {
-  margin: 0;
-  padding: 0;
-}
 .header__inner {
   display: flex;
+  justify-content: space-between;
+  background-color: #000;
 }/*# sourceMappingURL=common.css.map */
