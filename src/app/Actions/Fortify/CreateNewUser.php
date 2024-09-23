@@ -23,6 +23,7 @@ class CreateNewUser implements CreatesNewUsers
 			'name' => ['required', 'string', 'max:191'],
 			'post_code' => ['required', 'string', 'max:10'],
 			'address' => ['required', 'string', 'max:191'],
+			'buiiding' => ['nullable', 'string', 'max:191'],
 			'image_url' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'string', 'email', 'max:191',	Rule::unique(User::class),],
 			'password' => ['required', 'string', 'min:8', 'max:191', 'confirmed'],
