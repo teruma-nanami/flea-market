@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+	use HasFactory;
+
+	protected $fillable = [
+		'name',
+	];
+
+	public function items()
+	{
+		return $this->hasMany(Item::class);
+	}
 }
