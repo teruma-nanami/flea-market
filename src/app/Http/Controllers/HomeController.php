@@ -4,9 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\HomeRequest;
+use App\Models\Item;
 
 class HomeController extends Controller
 {
+
+    public function index()
+    {
+        $items = Item::all();
+        $favorites = Auth::check() ? Auth::user()->favorites : collect();
+
+        return view('index', compact('items', 'favorites'));
+    }
+
+    public function show($id)
+    {
+        $item = Item::findOrFail($id);
+        return view('detail', compact('item'));
+    }
+
+    public function mypage()
+    {
+        $user = Auth::user();
+        $myItems = $user->items;
+        $purchasedItems = Item::where('is_sold', true)->where('user_id', $user->id)->get();
+
+        return view('mypage', compact('myItems', 'purchasedItems'));
+    }
+    
     public function profileShow()
     {
         return view('profile');
