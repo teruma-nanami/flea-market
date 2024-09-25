@@ -7,6 +7,7 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 use Laravel\Fortify\Http\Controllers\NewPasswordController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 
 /*
@@ -39,8 +40,19 @@ Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
-Route::get('/item', [ItemController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/item/{id}', [HomeController::class, 'show'])->name('item.show');
+Route::get('/purchase/thanks', [ItemController::class, 'thanks'])->name('purchase.thanks');
+Route::get('/items/completed', [ItemController::class, 'completed'])->name('items.completed');
 
-Route::get('/', function () {
-    return view('auth.verify-email');
+Route::middleware(['auth', 'verified'])->group(function () {
+	Route::get('/profile/', [HomeController::class, 'profileShow'])->name('profile.show');
+	Route::patch('/profile/update', [HomeController::class, 'profileUpdate'])->name('profile.update');
+	Route::get('/item', [ItemController::class, 'index'])->name('home');
+	Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+	Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+	Route::get('/purchase/{id}', [ItemController::class, 'show'])->name('purchase.show');
+Route::post('/purchase/{id}', [ItemController::class, 'purchace'])->name('purchase.store');
+	Route::get('/mypage', [HomeController::class, 'mypage'])->name('profile.mypage');
+	
 });
