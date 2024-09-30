@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         return view('mypage', compact('myItems', 'purchasedItems'));
     }
-    
+
     public function profileShow()
     {
         return view('profile');
@@ -53,5 +53,27 @@ class HomeController extends Controller
         $user->save();
 
         return redirect()->route('profile.show')->with('success', 'プロフィールが更新されました。');
+    }
+
+    public function addressEdit()
+    {
+        return view('address.edit');
+    }
+
+    public function addressUpdate(Request $request)
+    {
+        $request->validate([
+            'post_code' => 'required|string|max:10',
+            'address' => 'required|string|max:255',
+            'building' => 'nullable|string|max:255',
+        ]);
+
+        $user = Auth::user();
+        $user->post_code = $request->post_code;
+        $user->address = $request->address;
+        $user->building = $request->building;
+        $user->save();
+
+        return redirect()->route('purchase.show', session('item_id'))->with('success', '配送先が更新されました。');
     }
 }

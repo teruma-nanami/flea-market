@@ -1,0 +1,30 @@
+@import 'variables';
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+.flex__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width:768px) {
+  .container {
+    max-width: 1440px;
+  }
+  .item__inner {
+    padding: 60px 0;
+    border-bottom: 1px solid #000;
+  }
+  .img__inner {
+    width: 178px;
+    img {
+      width: 100%;
+    }
+  }
+  .desc__inner {
+    width: 680px;
+    padding: 45px;
+  }
+}

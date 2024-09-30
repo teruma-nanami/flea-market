@@ -1,0 +1,52 @@
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+
+.flex__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buy__button--stock a {
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  background-color: #ff5555;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+}
+.buy__button--sold {
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  background-color: #999;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1440px;
+  }
+  .img__inner {
+    width: 680px;
+    padding: 45px;
+  }
+  .img__inner img {
+    width: 100%;
+  }
+  .desc__inner {
+    width: 680px;
+    padding: 45px;
+  }
+}/*# sourceMappingURL=detail.css.map */

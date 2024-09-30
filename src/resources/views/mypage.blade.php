@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
+@section('css')
+  <link rel="stylesheet" href="{{ asset('css/mypage.css') }}" />
+@endsection
+
 @section('content')
   <div class="container">
-    <h1>マイページ</h1>
     <div class="user-info">
       <img src="{{ auth()->user()->image_url }}" class="img-fluid rounded-circle" alt="{{ auth()->user()->name }}">
-      <h2>{{ auth()->user()->name }}</h2>
+      <p>{{ auth()->user()->name }}</p>
       <a href="{{ route('profile.show') }}" class="btn btn-primary">プロフィール編集</a>
     </div>
     <div class="tabs">

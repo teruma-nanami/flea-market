@@ -45,6 +45,12 @@ Route::get('/item/{id}', [HomeController::class, 'show'])->name('item.show');
 Route::get('/purchase/thanks', [ItemController::class, 'thanks'])->name('purchase.thanks');
 Route::get('/items/completed', [ItemController::class, 'completed'])->name('items.completed');
 
+// ログアウト
+Route::post('/logout', function () {
+	Auth::logout();
+	return redirect('/login');
+})->name('logout');
+
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/profile/', [HomeController::class, 'profileShow'])->name('profile.show');
 	Route::patch('/profile/update', [HomeController::class, 'profileUpdate'])->name('profile.update');
@@ -52,7 +58,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
 	Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 	Route::get('/purchase/{id}', [ItemController::class, 'show'])->name('purchase.show');
-Route::post('/purchase/{id}', [ItemController::class, 'purchace'])->name('purchase.store');
+	Route::post('/purchase/{id}', [ItemController::class, 'purchace'])->name('purchase.store');
 	Route::get('/mypage', [HomeController::class, 'mypage'])->name('profile.mypage');
-	
+	Route::get('/address/edit', [HomeController::class, 'addressEdit'])->name('address.edit');
+	Route::patch('/address/update', [HomeController::class, 'addressUpdate'])->name('address.update');
 });

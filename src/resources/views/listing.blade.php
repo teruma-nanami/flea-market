@@ -1,49 +1,73 @@
 @extends('layouts.app')
 
+@section('css')
+  <link rel="stylesheet" href="{{ asset('css/listing.css') }}" />
+@endsection
+
 @section('content')
   <div class="container">
-    <h1>商品出品</h1>
-    <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+    <h2>商品の出品</h2>
+    <form action="{{ route('items.store') }}" method="POST" class="form" enctype="multipart/form-data">
       @csrf
 
-      <div class="form-group">
-        <label for="image_url">商品画像</label>
-        <input type="file" name="image_url" id="image_url" class="form-control" required>
+      <div class="form__inner-text">
+        <p>商品画像</p>
+        <input type="file" name="image_url" required>
       </div>
-
-      <div class="form-group">
-        <label for="name">商品名</label>
-        <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
-      </div>
-
-      <div class="form-group">
-        <label for="categories">カテゴリー</label>
-        <select name="categories[]" id="categories" class="form-control" multiple required>
+      {{-- <div class="form__inner-text">
+        <p>カテゴリー</p>
+        <select name="categories[]" id="categories"  multiple size="{{ count($categories) }}" required>
           @foreach ($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
           @endforeach
         </select>
+      </div> --}}
+      <h3>商品の詳細</h3>
+      <div class="form__inner-text">
+        <p>カテゴリー</p>
+        <div class="category__container">
+          @foreach ($categories as $category)
+            <div class="category__item">
+              <input type="checkbox" name="categories[]" value="{{ $category->id }}" id="category_{{ $category->id }}" class="category__checkbox">
+              <label for="category_{{ $category->id }}">{{ $category->name }}</label>
+            </div>
+          @endforeach
+        </div>
       </div>
-
-      <div class="form-group">
-        <label for="condition">商品の状態</label>
-        <select name="condition" id="condition" class="form-control" required>
-          <option value="new">新品</option>
-          <option value="used">中古</option>
+      <div class="form__inner-text">
+        <p>商品の状態</p>
+        <select name="status" id="status"  required>
+          <option value="">状態を選択してください</option>
+          <option value="新品">新品</option>
+          <option value="未使用に近い">未使用に近い</option>
+          <option value="目立った汚れなし">目立った汚れなし</option>
+          <option value="傷や汚れあり">傷や汚れあり</option>
+          <option value="状態が悪い">状態が悪い</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="price">価格</label>
-        <input type="number" name="price" id="price" class="form-control" value="{{ old('price') }}" required>
+      <h3>商品名と説明</h3>
+
+      <div class="form__inner-text">
+        <p>商品名</p>
+        <input type="text" name="name" id="name"  value="{{ old('name') }}" required>
       </div>
 
-      <div class="form-group">
-        <label for="description">商品の説明</label>
-        <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
+
+      <div class="form__inner-text">
+        <p>商品の説明</p>
+        <textarea name="description" id="description" >{{ old('description') }}</textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">出品する</button>
+
+      <div class="form__inner-text">
+        <p>価格</p>
+        <input type="text" name="price" id="price"  value="{{ old('price') }}" required>
+      </div>
+
+      <div class="form__button">
+      <button type="submit">出品する</button>
+    </div>
     </form>
   </div>
 @endsection

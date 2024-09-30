@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const tabLinks = document.querySelectorAll('.tab-link');
+  const tabLinks = document.querySelectorAll('.tab__button');
   const tabPanes = document.querySelectorAll('.tab-pane');
 
   tabLinks.forEach(link => {
