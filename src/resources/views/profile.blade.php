@@ -12,8 +12,13 @@
       @csrf
       @method('PATCH')
 
-      <div class="form__inner-text">
-        <input type="file" name="image_url" id="image_url" placeholder="画像を選択する">
+      <div class="flex__inner">
+        <div class="img__inner">
+          <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
+        </div>
+        <div class="form__inner-text">
+          <input type="file" name="image_url" id="image_url" placeholder="画像を選択する">
+        </div>
       </div>
 
       <div class="form__inner-text">
@@ -38,7 +43,7 @@
         <input type="text" name="building" id="building" value="{{ old('building', auth()->user()->building) }}">
       </div>
       <div class="form__button">
-        <button type="submit">更新</button>
+        <button type="submit">更新する</button>
       </div>
     </form>
   </div>

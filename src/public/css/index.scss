@@ -13,20 +13,23 @@ h2 {
 }
 
 .tab {
-  &__container {
-    border-bottom: 1px solid #000;
-    padding-bottom: 60px;
-    margin-bottom: 60px;
+  &__inner {
+    margin-top: 60px;
   }
 
-  &__inner {
-    max-width: 1440px;
-    margin: 0 auto;
+  &__button {
+    appearance: none;
+    background-color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 8px 16px;
   }
 }
 
 .item {
   &__inner {
+    margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -127,6 +130,11 @@ h2 {
       button {
         font-size: 26px;
       }
+    }
+  }
+  .tab {
+    &__button {
+      font-size: 18px;
     }
   }
 }

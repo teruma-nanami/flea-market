@@ -3,6 +3,7 @@
 .container {
   max-width: 680px;
   margin: 0 auto;
+  margin-bottom: 60px;
   padding: 0 5px;
 }
 
@@ -10,6 +11,13 @@ h2 {
   text-align: center;
   margin-top: 80px;
   font-size: 36px;
+}
+
+h3 {
+  color: #5F5F5F;
+  border-bottom: 1px solid #5F5F5F;
+  font-size: 24px;
+  padding: 6px 0;
 }
 
 .form {
@@ -76,7 +84,6 @@ h2 {
       border-radius: 20px;
       cursor: pointer;
     }
-    
   }
   
   &__checkbox {
@@ -92,6 +99,9 @@ h2 {
 
 
 @media (min-width:768px) {
+  h3 {
+    font-size: 30px;
+  }
   .container {
     max-width: 680px;
   }
@@ -105,5 +115,10 @@ h2 {
   .desc__inner {
     width: 680px;
     padding: 45px;
+  }
+  .form {
+    button {
+      font-size: 18px;
+    }
   }
 }

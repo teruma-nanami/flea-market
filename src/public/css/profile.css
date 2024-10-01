@@ -10,14 +10,10 @@ h2 {
   font-size: 36px;
 }
 
-.tab__container {
-  border-bottom: 1px solid #000;
-  padding-bottom: 60px;
-  margin-bottom: 60px;
-}
-.tab__inner {
-  max-width: 1440px;
-  margin: 0 auto;
+.flex__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .item__inner {

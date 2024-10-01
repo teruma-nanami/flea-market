@@ -14,14 +14,6 @@
         <p>商品画像</p>
         <input type="file" name="image_url" required>
       </div>
-      {{-- <div class="form__inner-text">
-        <p>カテゴリー</p>
-        <select name="categories[]" id="categories"  multiple size="{{ count($categories) }}" required>
-          @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-          @endforeach
-        </select>
-      </div> --}}
       <h3>商品の詳細</h3>
       <div class="form__inner-text">
         <p>カテゴリー</p>

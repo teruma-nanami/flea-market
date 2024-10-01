@@ -10,17 +10,22 @@ h2 {
   font-size: 36px;
 }
 
-.tab__container {
-  border-bottom: 1px solid #000;
-  padding-bottom: 60px;
-  margin-bottom: 60px;
-}
 .tab__inner {
-  max-width: 1440px;
-  margin: 0 auto;
+  margin-top: 60px;
+}
+.tab__button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin: 8px 16px;
 }
 
 .item__inner {
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -99,5 +104,8 @@ h2 {
   }
   .form__button button {
     font-size: 26px;
+  }
+  .tab__button {
+    font-size: 18px;
   }
 }/*# sourceMappingURL=index.css.map */

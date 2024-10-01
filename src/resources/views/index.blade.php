@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-  <div class="tab__container">
+  <div class="container">
     <div class="tab__inner">
       <button class="tab__button active" data-tab="all-products">すべての商品</button>
       @auth
@@ -13,6 +13,7 @@
       @endauth
     </div>
   </div>
+  <hr>
   <div class="container">
     <div id="all-products" class="item__inner active">
       @foreach ($items as $item)
@@ -32,6 +33,5 @@
         @endforeach
       </div>
     @endauth
-  </div>
   </div>
 @endsection
