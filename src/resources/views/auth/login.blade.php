@@ -8,7 +8,7 @@
       <div class="form__inner">
         <div class="form__inner-text">
           <label for="email">メールアドレス
-          <input type="text" name="email" placeholder="email"></label>
+            <input type="text" name="email" placeholder="email"></label>
         </div>
         <div class="form__error">
           @error('email')
@@ -17,7 +17,7 @@
         </div>
         <div class="form__inner-text">
           <label for="password">パスワード
-          <input type="password" name="password" placeholder="Password"></label>
+            <input type="password" name="password" placeholder="Password"></label>
         </div>
         <div class="form__error">
           @error('password')
@@ -34,11 +34,13 @@
         </div>
       </div>
     </form>
-    <p>
-      <a href="{{ asset('forgot-password') }}">パスワードを忘れてしまった方はこちら</a>
-    </p>
-    <p>
-      <a href="{{ asset('register') }}">会員登録はこちら</a>
-    </p>
+    <div class="login__link">
+      <p>
+        <a href="{{ asset('forgot-password') }}">パスワードを忘れてしまった方はこちら</a>
+      </p>
+      <p>
+        <a href="{{ asset('register') }}">会員登録はこちら</a>
+      </p>
+    </div>
   </div>
 @endsection

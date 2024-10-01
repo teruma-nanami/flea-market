@@ -42,8 +42,8 @@
         </div>
       </div>
     </form>
-    <p>
-      <a href="{{ asset('login') }}">ログインはこちら</a>
-    </p>
+    <div class="login__link">
+      <p><a href="{{ asset('login') }}">ログインはこちら</a></p>
+    </div>
   </div>
 @endsection

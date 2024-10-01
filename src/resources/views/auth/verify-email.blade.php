@@ -3,8 +3,6 @@
 @section('content')
   <div class="container">
     <h2>ご登録ありがとうございます</h2>
-    <p>ご登録いただきましたメールアドレスにメールを送信いたしましたので、メールをご確認後、リンクをクリックしてください。
-      {{-- <a href="{{ route('verification.send') }}">click here to request another</a>. --}}
-    </p>
+    <p>ご登録いただきましたメールアドレスにメールを送信いたしましたので、メールをご確認後、リンクをクリックしてください。</p>
   </div>
 @endsection

@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
 			$table->string('title');
 			$table->text('description');
 			$table->decimal('price', 10, 2);
+			$table->enum('status', ['新品', '未使用に近い', '目立った汚れなし', '傷や汚れあり', '状態が悪い']);
 			$table->foreignId('category_id')->constrained()->onDelete('cascade');
 			$table->string('image_url');
 			$table->boolean('is_sold')->default(false);

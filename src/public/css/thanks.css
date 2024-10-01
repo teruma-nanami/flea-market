@@ -1,0 +1,26 @@
+.container {
+  max-width: 680px;
+  margin: 60px auto;
+  padding: 0 5px;
+  text-align: center;
+}
+.container h2 {
+  margin-top: 80px;
+  font-size: 36px;
+}
+.container p {
+  margin: 40px 0;
+  font-size: 18px;
+}
+.container a {
+  color: #ff5555;
+  border: 1px solid #ff5555;
+  font-size: 24px;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+.container a:hover {
+  color: #fff;
+  background-color: #f93;
+  border: 1px solid #f93;
+}/*# sourceMappingURL=thanks.css.map */

@@ -16,5 +16,13 @@
         </div>
       </div>
     </form>
+    <div class="login__link">
+      <p>
+        <a href="{{ asset('login') }}">ログインはこちら</a>
+      </p>
+      <p>
+        <a href="{{ asset('register') }}">会員登録はこちら</a>
+      </p>
+    </div>
   </div>
 @endsection

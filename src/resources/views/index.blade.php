@@ -1,37 +1,40 @@
 @extends('layouts.app')
 
+@section('css')
+  <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+@endsection
+
 @section('content')
   <div class="container">
-    <h1>メインページ</h1>
-    <div class="tabs">
-      <button class="tab-link active" data-tab="all-products">すべての商品</button>
+    <div class="tab__inner">
+      <button class="tab__button active" data-tab="all-products">おすすめ</button>
       @auth
-        <button class="tab-link" data-tab="favorite-products">お気に入り</button>
+        <button class="tab__button" data-tab="favorite-products">マイリスト</button>
       @endauth
     </div>
-    <div class="item__inner">
-      <div id="all-products" class="tab-pane active">
-        <div class="row">
-          @foreach ($items as $item)
-            <div class="item__card">
-              <a href="{{ route('item.show', $item->id) }}" class="btn btn-primary"><img src="{{ $item->image_url }}" class="card-img-top" alt="{{ $item->title }}"></a>
-              <h5 class="card-title">{{ $item->title }}</h5>
-            </div>
-          @endforeach
+  </div>
+  <hr>
+  <div class="container">
+    <div id="all-products" class="item__inner active">
+      @foreach ($items as $item)
+        <div class="item__card">
+          <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
+          <p>{{ $item->title }}</p>
+          @if ($item->is_sold)
+            <div class="item__sold"><span>SOLD</span></div>
+          @endif
         </div>
-      </div>
-      @auth
-        <div id="favorite-products" class="tab-pane">
-          <div class="row">
-            @foreach ($favorites as $item)
-            <div class="item__card">
-              <a href="{{ route('item.show', $item->id) }}" class="btn btn-primary"><img src="{{ $item->image_url }}" class="card-img-top" alt="{{ $item->title }}"></a>
-              <h5 class="card-title">{{ $item->title }}</h5>
-            </div>
-            @endforeach
+      @endforeach
+    </div>
+    @auth
+      <div id="favorite-products" class="item__inner">
+        @foreach ($favorites as $item)
+          <div class="item__card">
+            <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
+            <p>{{ $item->title }}</p>
           </div>
-        </div>
-      @endauth
-    </div>
+        @endforeach
+      </div>
+    @endauth
   </div>
 @endsection
