@@ -9,6 +9,8 @@ use Laravel\Fortify\Http\Controllers\NewPasswordController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,4 +64,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/mypage', [HomeController::class, 'mypage'])->name('profile.mypage');
 	Route::get('/address/edit/{id}', [HomeController::class, 'addressEdit'])->name('address.edit');
 	Route::patch('/address/update/{id}', [HomeController::class, 'addressUpdate'])->name('address.update');
+	Route::post('/items/{item}/comments', [CommentController::class, 'store'])->name('comments.store');
+	Route::post('/items/{item}/favorite', [FavoriteController::class, 'toggle'])->name('favorite.toggle');
 });

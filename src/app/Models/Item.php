@@ -34,8 +34,12 @@ class Item extends Model
 		return $this->belongsTo(Category::class);
 	}
 
-	public function favoritedBy()
+	public function favorites()
 	{
-		return $this->belongsToMany(User::class, 'favorites');
+		return $this->hasMany(Favorite::class);
 	}
+	// public function favoritedBy()
+	// {
+	// 	return $this->belongsToMany(User::class, 'favorites');
+	// }
 }

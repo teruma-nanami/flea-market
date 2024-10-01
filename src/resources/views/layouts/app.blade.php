@@ -46,28 +46,28 @@
   </header>
   <main>
     @if (session('success'))
-    <div class="alert alert-success">
-      {{ session('success') }}
-    </div>
-  @endif
-  @if (session('error'))
-    <div class="alert alert-danger">
-      {{ session('error') }}
-    </div>
-  @endif
-  @if ($errors->any())
-    <div class="alert alert-danger">
-      <ul>
-        @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    </div>
-  @endif
+      <div class="alert alert-success">
+        {{ session('success') }}
+      </div>
+    @endif
+    @if (session('error'))
+      <div class="alert alert-danger">
+        {{ session('error') }}
+      </div>
+    @endif
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     @yield('content')
   </main>
-  <script src="{{ asset('js/humberger.js') }}"></script>
-  <script src="{{ asset('js/confirm.js') }}"></script>
+  <script src="{{ asset('js/tab.js') }}"></script>
+  <script src="{{ asset('js/favorite.js') }}"></script>
 </body>
 
 </html>

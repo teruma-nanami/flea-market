@@ -24,7 +24,7 @@ class FavoriteRequest extends FormRequest
     public function rules()
     {
         return [
-            'item_id' => 'required|exists:items,id',
+            //
         ];
     }
 }
