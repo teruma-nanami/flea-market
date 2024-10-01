@@ -33,13 +33,13 @@
         <p>{{ auth()->user()->post_code }}</p>
         <p>{{ auth()->user()->address }}</p>
         <p>{{ auth()->user()->building }}</p>
-        <a href="{{ route('address.edit') }}" class="btn btn-secondary">配送先変更</a>
+        <a href="{{ route('address.edit', ['id' => $item->id]) }}">配送先変更</a>
       </div>
     </div>
     <div class="__inner">
       <p>金額: ¥{{ number_format($item->price, 2) }}</p>
       <p>支払い方法: {{ session('payment_method', '未選択') }}</p>
-			<form action="{{ route('purchase.store', $item->id) }}" method="POST" class="mt-3">
+			<form action="{{ route('purchase.store', $item->id) }}" method="POST" class="form">
 				@csrf
 				<button type="submit" class="">購入を確定する</button>
 			</form>

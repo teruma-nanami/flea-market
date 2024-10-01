@@ -36,6 +36,9 @@ h2 {
   width: 100%;
   height: 290px;
 }
+.item__card img:hover {
+  opacity: 0.75;
+}
 .item__card p {
   margin-bottom: 35px;
 }

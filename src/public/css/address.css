@@ -79,7 +79,7 @@ h2 {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 1440px;
+    max-width: 680px;
   }
   .item__card {
     margin-right: 70px;
@@ -96,4 +96,4 @@ h2 {
   .form__button button {
     font-size: 26px;
   }
-}/*# sourceMappingURL=profile.css.map */
+}/*# sourceMappingURL=address.css.map */

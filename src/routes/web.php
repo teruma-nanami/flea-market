@@ -60,6 +60,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/purchase/{id}', [ItemController::class, 'show'])->name('purchase.show');
 	Route::post('/purchase/{id}', [ItemController::class, 'purchace'])->name('purchase.store');
 	Route::get('/mypage', [HomeController::class, 'mypage'])->name('profile.mypage');
-	Route::get('/address/edit', [HomeController::class, 'addressEdit'])->name('address.edit');
-	Route::patch('/address/update', [HomeController::class, 'addressUpdate'])->name('address.update');
+	Route::get('/address/edit/{id}', [HomeController::class, 'addressEdit'])->name('address.edit');
+	Route::patch('/address/update/{id}', [HomeController::class, 'addressUpdate'])->name('address.update');
 });
