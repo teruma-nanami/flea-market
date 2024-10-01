@@ -7,7 +7,9 @@
 @section('content')
   <div class="container">
     <div class="profile__inner flex__inner">
-      <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
+      <div class="img__inner">
+        <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
+      </div>
       <p>{{ auth()->user()->name }}</p>
       <p><a href="{{ route('profile.show') }}">プロフィール編集</a></p>
     </div>

@@ -7,19 +7,22 @@
 
 @section('content')
   <div class="container">
-    <h2>プロフィール更新</h2>
+    <h2>プロフィール設定</h2>
     <form action="{{ route('profile.update') }}" method="POST" class="form" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
 
       <div class="flex__inner">
         <div class="img__inner">
-          <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
+            <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
         </div>
         <div class="form__inner-text">
-          <input type="file" name="image_url" id="image_url" placeholder="画像を選択する">
+            <label for="image_url" class="form__file">
+                画像を選択する
+            </label>
+            <input type="file" name="image_url" id="image_url" hidden>
         </div>
-      </div>
+    </div>
 
       <div class="form__inner-text">
         <label for="name">名前</label>

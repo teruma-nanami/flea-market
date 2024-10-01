@@ -12,13 +12,13 @@
           <img src="{{ $item->image_url }}" class="img-fluid" alt="{{ $item->title }}">
         </div>
         <div class="desc__inner">
-          <p class="">商品名: {{ $item->title }}</p>
-          <p class="">価格: ¥{{ number_format($item->price, 2) }}</p>
+          <h2>{{ $item->title }}</h2>
+          <p>¥{{ number_format($item->price, 0) }}(税込)</p>
         </div>
       </div>
       <div class="item__inner">
-				<p>支払い方法</p>
-        <form action="{{ route('purchase.store', $item->id) }}" method="POST" class="mt-3">
+        <h3>支払い方法</h3>
+        <form action="{{ route('purchase.store', $item->id) }}" method="POST">
           @csrf
           <div class="form__text">
             <select name="payment_method" id="payment_method" required>
@@ -29,20 +29,28 @@
         </form>
       </div>
       <div class="item__inner">
-        <p>配送先</p>
+        <h3>配送先</h3>
         <p>{{ auth()->user()->post_code }}</p>
         <p>{{ auth()->user()->address }}</p>
         <p>{{ auth()->user()->building }}</p>
         <a href="{{ route('address.edit', ['id' => $item->id]) }}">配送先変更</a>
       </div>
     </div>
-    <div class="__inner">
-      <p>金額: ¥{{ number_format($item->price, 2) }}</p>
-      <p>支払い方法: {{ session('payment_method', '未選択') }}</p>
-			<form action="{{ route('purchase.store', $item->id) }}" method="POST" class="form">
-				@csrf
-				<button type="submit" class="">購入を確定する</button>
-			</form>
+    <div class="buy__inner">
+      <table>
+        <tr>
+          <th>金額</th>
+          <td>¥{{ number_format($item->price, 0) }}</td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <td>コンビニ払い</td>
+        </tr>
+      </table>
+      <form action="{{ route('purchase.store', $item->id) }}" method="POST" class="form">
+        @csrf
+        <button type="submit" class="form__button">購入する</button>
+      </form>
     </div>
   </div>
 @endsection

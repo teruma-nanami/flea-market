@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
 			'email_verified_at' => now(),
 			'password' => bcrypt('password'), // パスワードをハッシュ化
 			'password_digest' => bcrypt('password'), // パスワードダイジェストをハッシュ化
-			'image_url' => '/storage/default/default.png',
+			'image_url' => '/img/default.png',
 			'remember_token' => Str::random(10),
 			'created_at' => now(),
 			'updated_at' => now(),

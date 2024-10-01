@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
@@ -15,30 +16,25 @@ class ItemController extends Controller
         return view('listing', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
-        $request->validate([
-            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name' => 'required|string|max:255',
-            'categories' => 'required|array',
-            'categories.*' => 'exists:categories,id',
-            'condition' => 'required|string|in:new,used',
-            'price' => 'required|numeric|min:0',
-            'description' => 'nullable|string',
-        ]);
-
         $imagePath = $request->file('image_url')->store('item_images', 'public');
+
+        $description = $request->description;
+        if (empty($description)) {
+            $description = '説明文はありません';
+        }
 
         $item = Item::create([
             'user_id' => Auth::id(),
             'title' => $request->name,
-            'description' => $request->description,
+            'description' => $description,
             'price' => $request->price,
             'image_url' => '/storage/' . $imagePath,
+            'status' => $request->status,
+            'category_id' => $request->category_id,
             'is_sold' => false,
         ]);
-
-        $item->categories()->attach($request->categories);
 
         return redirect()->route('items.completed');
     }

@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="{{ asset('css/variables.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
@@ -20,30 +19,9 @@
 
 <body>
   <header class="header">
-    @if (session('success'))
-      <div class="alert alert-success">
-        {{ session('success') }}
-      </div>
-    @endif
-    @if (session('error'))
-      <div class="alert alert-danger">
-        {{ session('error') }}
-      </div>
-    @endif
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-    @endif
-
-
     <div class="header__inner">
       <h1>
-        <a href="/" class="header__logo"><img src="storage/logo/logo.png" alt=""></a>
+        <a href="/" class="header__logo"><img src="img/logo.png" alt=""></a>
       </h1>
     </div>
   </header>

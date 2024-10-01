@@ -7,9 +7,9 @@
 @section('content')
   <div class="container">
     <div class="tab__inner">
-      <button class="tab__button active" data-tab="all-products">すべての商品</button>
+      <button class="tab__button active" data-tab="all-products">おすすめ</button>
       @auth
-        <button class="tab__button" data-tab="favorite-products">お気に入り</button>
+        <button class="tab__button" data-tab="favorite-products">マイリスト</button>
       @endauth
     </div>
   </div>
@@ -19,7 +19,10 @@
       @foreach ($items as $item)
         <div class="item__card">
           <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
-          <p class="card-title">{{ $item->title }}</p>
+          <p>{{ $item->title }}</p>
+          @if ($item->is_sold)
+            <div class="item__sold"><span>SOLD</span></div>
+          @endif
         </div>
       @endforeach
     </div>
@@ -28,7 +31,7 @@
         @foreach ($favorites as $item)
           <div class="item__card">
             <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
-            <p class="card-title">{{ $item->title }}</p>
+            <p>{{ $item->title }}</p>
           </div>
         @endforeach
       </div>

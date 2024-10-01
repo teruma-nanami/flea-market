@@ -26,13 +26,30 @@ h3 {
 .form__inner-text {
   margin: 30px 0;
 }
-.form__inner-text input, .form__inner-text select, .form__inner-text textarea {
+.form__inner-text input,
+.form__inner-text select,
+.form__inner-text textarea {
   width: 100%;
   padding: 10px;
 }
-.form__inner-check {
-  font-size: 12px;
-  text-align: right;
+.form__inner-file label {
+  display: block;
+  width: 100%;
+  height: 180px;
+  text-align: center;
+  padding: 80px 0 0;
+  border: #5F5F5F dotted 1px;
+  cursor: pointer;
+}
+.form__file {
+  color: #ff5555;
+  border: 1px solid #ff5555;
+  border-radius: 8px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.form__file:hover {
+  opacity: 0.75;
 }
 .form__button {
   margin-top: 40px;
@@ -55,30 +72,25 @@ h3 {
 .category__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
 }
 .category__item {
   border: 1px solid #ff5555;
   color: #ff5555;
   border-radius: 20px;
   text-align: center;
-  flex: 1 1 100px;
   cursor: pointer;
-  position: relative;
 }
 .category__item label {
   display: block;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
   border-radius: 20px;
+  padding: 2px 10px;
   cursor: pointer;
 }
-.category__checkbox {
+.category__radio {
   display: none;
 }
-.category__checkbox:checked + label {
+.category__radio:checked + label {
   background-color: #ff5555;
   color: white;
 }
@@ -100,6 +112,11 @@ h3 {
   .desc__inner {
     width: 680px;
     padding: 45px;
+  }
+  .form p {
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: bold;
   }
   .form button {
     font-size: 18px;

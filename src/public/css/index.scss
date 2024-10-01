@@ -32,14 +32,17 @@ h2 {
     margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   &__card {
-    width: 280px;
+    width: 180px;
+    position: relative;
 
     img {
       width: 100%;
-      height: 290px;
+      height: 100%;
+      object-fit: cover;
     }
 
     img:hover {
@@ -51,6 +54,28 @@ h2 {
     }
   }
 
+  &__sold {
+    position: absolute;
+    top: -9px;
+    left: -39px;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 60px solid #ce0000;
+    color: white;
+    text-align: center;
+    line-height: 0;
+    transform: rotate(-45deg);
+    span {
+      position: absolute;
+      top: 45px;
+      right: -20px;
+      transform: rotate(0deg);
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
 }
 
 .form {
@@ -92,33 +117,11 @@ h2 {
   }
 }
 
-.login__link {
-  p {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 15px;
 
-    a {
-      color: $link-color;
-    }
-
-    a:hover {
-      color: $hover-color;
-      transition: .2s;
-    }
-  }
-
-}
 
 @media (min-width:768px) {
   .container {
     max-width: 1440px;
-  }
-
-  .item {
-    &__card {
-      margin-right: 70px;
-    }
   }
 
   p {
@@ -136,9 +139,30 @@ h2 {
       }
     }
   }
+
   .tab {
     &__button {
       font-size: 18px;
+      margin: 8px 60px;
+    }
+  }
+
+  .item {
+    &__inner {
+      margin: 40px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    &__card {
+      width: 320px;
+
+      img {
+        width: 100%;
+        height: 320px;
+      }
     }
   }
 }

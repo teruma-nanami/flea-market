@@ -2,31 +2,12 @@
   max-width: 680px;
   margin: 0 auto;
   padding: 0 5px;
-  margin-bottom: 100px;
 }
 
 h2 {
   text-align: center;
   margin-top: 80px;
   font-size: 36px;
-}
-
-.flex__inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.img__inner {
-  width: 150px;
-  height: 150px;
-}
-.img__inner img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 150px;
 }
 
 .form {
@@ -40,17 +21,11 @@ h2 {
 .form__inner-text input {
   width: 100%;
   padding: 10px;
+  margin-top: 4px;
 }
-.form__file {
-  color: #ff5555;
-  border: 1px solid #ff5555;
-  border-radius: 8px;
-  padding: 4px 12px;
-  margin-left: 40px;
-  cursor: pointer;
-}
-.form__file:hover {
-  opacity: 0.75;
+.form__inner-check {
+  font-size: 12px;
+  text-align: right;
 }
 .form__button {
   margin-top: 40px;
@@ -69,18 +44,31 @@ h2 {
   transition: 0.3s;
 }
 
+.login__link p {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 15px;
+}
+.login__link p a {
+  color: #0073CC;
+}
+.login__link p a:hover {
+  color: #f93;
+  transition: 0.2s;
+}
+
 @media (min-width: 768px) {
-  .container {
-    max-width: 1440px;
-  }
-  .item__card {
-    margin-right: 70px;
-  }
   p {
     font-size: 18px;
   }
   .form {
     font-size: 24px;
+  }
+  .form__inner-text input {
+    margin-top: 8px;
+  }
+  .form__inner-check {
+    font-size: 18px;
   }
   .form__button {
     margin-top: 60px;
@@ -88,4 +76,7 @@ h2 {
   .form__button button {
     font-size: 26px;
   }
-}/*# sourceMappingURL=profile.css.map */
+  .login__link p {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=login.css.map */
