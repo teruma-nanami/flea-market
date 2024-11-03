@@ -12,23 +12,32 @@
       </div>
       <div class="desc__inner">
         <h2>{{ $item->title }}</h2>
-        <p>ブランド</p>
+        <p class="desc__text">ブランド名</p>
         <p>¥{{ number_format($item->price, 0) }}(税込)</p>
         <div class="count__inner flex__inner">
           <form action="{{ route('favorite.toggle', $item->id) }}" method="POST">
             @csrf
             <div class="favorite__icon" data-item-id="{{ $item->id }}">
-                <img src="/img/star-icon.png" alt="お気に入り" class="favorite-icon">
-                <p>{{ $item->favorites->count() }}</p>
+              @if (in_array($item->id, $favorites))
+                <button type="submit">
+                  <img src="/img/star-icon-active.png" alt="star-icon">
+                </button>
+              @else
+                <button type="submit">
+                  <img src="/img/star-icon.png" alt="star-icon">
+                </button>
+              @endif
+              <p>{{ $item->favorites->count() }}</p>
             </div>
-        </form>
+          </form>
+
           <div class="comment__icon">
             <img src="/img/comment-icon.png" alt="">
             <p>{{ $item->comments->count() }}</p>
           </div>
         </div>
         @if (!$item->is_sold)
-          <p class="buy__button--stock"><a href="{{ route('purchase.show', $item->id) }}" class="">購入手続きへ</a></p>
+          <p class="buy__button--stock"><a href="{{ route('purchase.show', $item->id) }}">購入手続きへ</a></p>
         @else
           <p class="buy__button--sold">購入されました</p>
         @endif
@@ -39,7 +48,11 @@
           <tbody>
             <tr>
               <th>カテゴリー</th>
-              <td class="category__table-text">{{ $item->category->name }}</td>
+              <td class="category__table-text">
+                @foreach ($item->categories as $category)
+                  <p>{{ $category->name }}</p>
+                @endforeach
+              </td>
             </tr>
             <tr>
               <th>商品の状態</th>
@@ -68,7 +81,6 @@
               <button type="submit">コメントを送信する</button>
             </div>
           </form>
-
         </div>
       </div>
     </div>

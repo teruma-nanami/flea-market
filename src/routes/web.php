@@ -43,6 +43,7 @@ Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])-
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/item/{id}', [HomeController::class, 'show'])->name('item.show');
 Route::get('/purchase/thanks', [ItemController::class, 'thanks'])->name('purchase.thanks');
 Route::get('/items/completed', [ItemController::class, 'completed'])->name('items.completed');

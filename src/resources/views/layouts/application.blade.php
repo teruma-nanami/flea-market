@@ -28,8 +28,7 @@
   <main>
     @yield('content')
   </main>
-  <script src="{{ asset('js/humberger.js') }}"></script>
-  <script src="{{ asset('js/confirm.js') }}"></script>
+  <script src="{{ asset('js/tab.js') }}"></script>
 </body>
 
 </html>

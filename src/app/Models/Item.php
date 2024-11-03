@@ -16,6 +16,7 @@ class Item extends Model
 		'price',
 		'category_id',
 		'image_url',
+		'buyer_id',
 		'is_sold',
 	];
 
@@ -38,8 +39,12 @@ class Item extends Model
 	{
 		return $this->hasMany(Favorite::class);
 	}
-	// public function favoritedBy()
-	// {
-	// 	return $this->belongsToMany(User::class, 'favorites');
-	// }
+	public function categories()
+	{
+		return $this->belongsToMany(Category::class, 'category_item');
+	}
+	public function buyer()
+	{
+		return $this->belongsTo(User::class, 'buyer_id');
+	}
 }

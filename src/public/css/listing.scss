@@ -98,11 +98,11 @@ h3 {
     }
   }
 
-  &__radio {
+  &__checkbox {
     display: none;
   }
 
-  &__radio:checked+label {
+  &__checkbox:checked+label {
     background-color: $base-color;
     color: white;
   }

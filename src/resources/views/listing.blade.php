@@ -25,8 +25,7 @@
         <div class="category__container">
           @foreach ($categories as $category)
             <div class="category__item">
-              <input type="radio" name="category_id" value="{{ $category->id }}" id="category_{{ $category->id }}"
-                class="category__radio">
+              <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" id="category_{{ $category->id }}" class="category__checkbox">
               <label for="category_{{ $category->id }}">{{ $category->name }}</label>
             </div>
           @endforeach
