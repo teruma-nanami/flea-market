@@ -27,17 +27,24 @@
       <div class="header__search">
         <form action="/search" method="POST">
           @csrf
-          <input type="text" placeholder="何をお探しですか？">
+          <input type="text" name="query" placeholder="何をお探しですか？">
+          <button type="submit"><i class="bi bi-search"></i></button>
         </form>
       </div>
       <div class="header__nav" id="navMenu">
         <ul>
-          <li>
-            <form action="/logout" method="POST">
-              @csrf
-              <button type="submit" class="logout__button">ログアウト</button>
-            </form>
-          </li>
+          @if (auth()->check())
+            <li>
+              <form action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="logout__button">ログアウト</button>
+              </form>
+            </li>
+          @else
+            <li>
+              <a href="{{ route('login') }}" class="login__button">ログイン</a>
+            </li>
+          @endif
           <li><a href="{{ route('profile.mypage') }}" class="mypage__button">マイページ</a></li>
           <li><a href="{{ route('items.create') }}" class="purchace__button">出品</a></li>
         </ul>
@@ -46,28 +53,28 @@
   </header>
   <main>
     @if (session('success'))
-    <div class="alert alert-success">
-      {{ session('success') }}
-    </div>
-  @endif
-  @if (session('error'))
-    <div class="alert alert-danger">
-      {{ session('error') }}
-    </div>
-  @endif
-  @if ($errors->any())
-    <div class="alert alert-danger">
-      <ul>
-        @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    </div>
-  @endif
+      <div class="alert alert-success">
+        {{ session('success') }}
+      </div>
+    @endif
+    @if (session('error'))
+      <div class="alert alert-danger">
+        {{ session('error') }}
+      </div>
+    @endif
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     @yield('content')
   </main>
-  <script src="{{ asset('js/humberger.js') }}"></script>
-  <script src="{{ asset('js/confirm.js') }}"></script>
+  <script src="{{ asset('js/tab.js') }}"></script>
+  <script src="{{ asset('js/purchase.js') }}"></script>
 </body>
 
 </html>

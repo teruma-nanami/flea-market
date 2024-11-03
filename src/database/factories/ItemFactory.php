@@ -18,7 +18,6 @@ class ItemFactory extends Factory
 			'title' => $this->faker->word,
 			'description' => $this->faker->sentence,
 			'price' => $this->faker->randomFloat(2, 10, 1000),
-			'category_id' => \App\Models\Category::factory(),
 			'image_url' => $this->faker->imageUrl(320, 240, 'technics', true, 'Faker'),
 			'is_sold' => $this->faker->boolean,
 			'created_at' => now(),

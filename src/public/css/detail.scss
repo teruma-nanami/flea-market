@@ -13,6 +13,11 @@ h3 {
   margin-top: 20px;
 }
 
+.desc__text {
+  color: #999;
+  font-size: 12px;
+}
+
 .flex__inner {
   display: flex;
   flex-wrap: wrap;
@@ -36,6 +41,11 @@ h3 {
   p {
     text-align: center;
   }
+  button {
+    appearance: none;
+    background-color: #fff;
+    border: none;
+  }
 }
 
 tr {
@@ -52,6 +62,56 @@ th,td {
 .category__table-text {
   background-color: #d5d5d5;
   border-radius: 20px;
+}
+
+.comment {
+  &__inner {
+    margin-top: 20px;
+  }
+  &__content {
+    background-color: #e5e5e5;
+    padding: 8px 16px;
+    margin: 20px 0;
+  }
+  &__text {
+    p {
+      margin: 10px 20px;
+    }
+  }
+  &__image {
+    width: 50px;
+    height: 50px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 150px;
+    }
+  }
+}
+
+.form {
+  &__inner-text {
+    textarea {
+      width: 100%;
+    }
+    button {
+      display: block;
+      padding: 10px 0;
+      margin: 20px 0;
+      text-align: center;
+      width: 100%;
+      border-radius: 4px;
+      border: none;
+      background-color: $base-color;
+      width: 100%;
+      color: #fff;
+      font-weight: bold;
+    }
+    button:hover {
+      opacity: .75;
+    }
+  }
 }
 
 .buy__button {
@@ -102,15 +162,13 @@ th,td {
   .desc__inner {
     width: 680px;
     padding: 20px 60px;
+    font-size: 28px;
     h2 {
       font-size: 45px;
     }
     h3 {
       font-size: 30px;
       margin-top: 40px;
-    }
-    p{
-      font-size: 28px;
     }
     th {
       font-weight: normal;
@@ -119,6 +177,17 @@ th,td {
     }
     td {
       font-size: 24px;
+    }
+  }
+  .desc__text {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .comment {
+    &__text {
+      p {
+        margin: 8px 20px;
+      }
     }
   }
 }

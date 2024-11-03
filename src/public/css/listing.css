@@ -87,10 +87,10 @@ h3 {
   padding: 2px 10px;
   cursor: pointer;
 }
-.category__radio {
+.category__checkbox {
   display: none;
 }
-.category__radio:checked + label {
+.category__checkbox:checked + label {
   background-color: #ff5555;
   color: white;
 }
@@ -121,4 +121,5 @@ h3 {
   .form button {
     font-size: 18px;
   }
-}/*# sourceMappingURL=listing.css.map */
+}
+/*# sourceMappingURL=listing.css.map */

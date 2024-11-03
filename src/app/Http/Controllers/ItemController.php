@@ -10,63 +10,65 @@ use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
-    public function create()
-    {
-        $categories = Category::all();
-        return view('listing', compact('categories'));
-    }
+	public function create()
+	{
+		$categories = Category::all();
+		return view('listing', compact('categories'));
+	}
 
-    public function store(ItemRequest $request)
-    {
-        $imagePath = $request->file('image_url')->store('item_images', 'public');
+	public function store(ItemRequest $request)
+	{
+		$imagePath = $request->file('image_url')->store('item_images', 'public');
 
-        $description = $request->description;
-        if (empty($description)) {
-            $description = '説明文はありません';
-        }
+		$description = $request->description;
+		if (empty($description)) {
+			$description = '説明文はありません';
+		}
 
-        $item = Item::create([
-            'user_id' => Auth::id(),
-            'title' => $request->name,
-            'description' => $description,
-            'price' => $request->price,
-            'image_url' => '/storage/' . $imagePath,
-            'status' => $request->status,
-            'category_id' => $request->category_id,
-            'is_sold' => false,
-        ]);
+		$item = Item::create([
+			'user_id' => Auth::id(),
+			'title' => $request->name,
+			'description' => $description,
+			'price' => $request->price,
+			'image_url' => '/storage/' . $imagePath,
+			'status' => $request->status,
+			'is_sold' => false,
+		]);
 
-        return redirect()->route('items.completed');
-    }
+		$item->categories()->attach($request->category_ids);
+		
+		return redirect()->route('items.completed');
+	}
 
-    public function show($id)
-    {
-        $item = Item::findOrFail($id);
-        return view('purchase', compact('item'));
-    }
+	public function show($id)
+	{
+		$item = Item::findOrFail($id);
+		return view('purchase', compact('item'));
+	}
 
-    public function purchace(Request $request, $id)
-    {
-        $item = Item::findOrFail($id);
+	public function purchace(Request $request, $id)
+	{
+		$item = Item::findOrFail($id);
 
-        if ($item->is_sold) {
-            return redirect()->route('item.show', $id)->with('error', 'この商品は既に売却されています。');
-        }
+		if ($item->is_sold) {
+			return redirect()->route('item.show', $id)->with('error', 'この商品は既に売却されています。');
+		}
 
-        $item->is_sold = true;
-        $item->save();
+		$item->is_sold = true;
+		$item->buyer_id = Auth::id();
+		$item->save();
 
-        // 購入処理をここに追加（例：購入履歴の保存など）
+		// 購入処理をここに追加（例：購入履歴の保存など）
 
-        return redirect()->route('purchase.thanks');
-    }
-    public function thanks()
-    {
-        return view('thanks');
-    }
+		return redirect()->route('purchase.thanks');
+	}
+	public function thanks()
+	{
+		return view('thanks');
+	}
 
-    public function completed()
-    {
-        return view('completed');
-    }
+	public function completed()
+	{
+		return view('completed');
+	}
 }

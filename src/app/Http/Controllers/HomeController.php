@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\HomeRequest;
+use App\Http\Requests\SearchRequest;
 use App\Models\Item;
 
 class HomeController extends Controller
@@ -11,23 +12,49 @@ class HomeController extends Controller
 
 	public function index()
 	{
-		$items = Item::all();
+		$items = Item::where('user_id', '!=', auth()->id())->get();
 		$favorites = Auth::check() ? Auth::user()->favorites : collect();
+		$query = null;
 
-		return view('index', compact('items', 'favorites'));
+		return view('index', compact('items', 'favorites', 'query'));
+		// return view('index', compact('items', 'favorites'));
+	}
+	public function search(SearchRequest $request)
+	{
+		$query = $request->input('query');
+
+		if (empty($query)) {
+			return redirect()->route('index'); // クエリが空の場合はindexページにリダイレクト
+		}
+
+		$items = Item::where('title', 'LIKE', "%{$query}%")->get();
+
+		if (auth()->check()) {
+			$user = auth()->user();
+			$favorites = $user ? $user->favorites()->where(function ($q) use ($query) {
+				$q->where('title', 'LIKE', "%{$query}%");
+			})->get() : collect();
+		} else {
+			$favorites = [];
+		}
+
+		return view('index', compact('items', 'favorites', 'query'));
 	}
 
 	public function show($id)
 	{
-		$item = Item::findOrFail($id);
-		return view('detail', compact('item'));
+		$item = Item::with('categories', 'favorites')->findOrFail($id);
+		$favorites = auth()->check() ? auth()->user()->favorites->pluck('id')->toArray() : [];
+
+		return view('detail', compact('item', 'favorites'));
 	}
+
 
 	public function mypage()
 	{
 		$user = Auth::user();
 		$myItems = $user->items;
-		$purchasedItems = Item::where('is_sold', true)->where('user_id', $user->id)->get();
+		$purchasedItems = Item::where('buyer_id', $user->id)->get();
 
 		return view('mypage', compact('myItems', 'purchasedItems'));
 	}

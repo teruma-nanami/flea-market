@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommentRequest extends FormRequest
+class SearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,13 @@ class CommentRequest extends FormRequest
      */
     public function rules()
     {
+        return ['query' => 'required|string|min:1|max:255',];
+    }
+    public function messages()
+    {
         return [
-            'content' => 'required|string|max:255',
+            'query.required' => '何か検索窓に文字を入力してください。',
+            'query.max' => '検索クエリは255文字以内でなければなりません。',
         ];
     }
 }

@@ -24,6 +24,7 @@
             <select name="payment_method" id="payment_method" required>
               <option value="convenience_store">コンビニ払い</option>
               <option value="credit_card">クレジットカード払い</option>
+              <option value="cash_on_delivery">商品代引き</option>
             </select>
           </div>
         </form>
@@ -44,7 +45,7 @@
         </tr>
         <tr>
           <th>支払い方法</th>
-          <td>コンビニ払い</td>
+          <td id="selected-payment-method">コンビニ払い</td>
         </tr>
       </table>
       <form action="{{ route('purchase.store', $item->id) }}" method="POST" class="form">

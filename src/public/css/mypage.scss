@@ -4,6 +4,9 @@
   max-width: 680px;
   margin: 0 auto;
   padding: 0 5px;
+  .active {
+    display: flex;
+  }
 }
 
 h2 {
@@ -50,20 +53,30 @@ h2 {
 }
 
 .tab {
+  &__inner {
+    .active {
+      display: inline-block;
+      color: $base-color;
+    }
+  }
   &__button {
     appearance: none;
     background-color: #fff;
     font-size: 16px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     margin: 8px 16px;
+  }
+  &__button:hover {
+    opacity: .5;
   }
 }
 
 .item {
   &__inner {
     margin: 40px 0;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 10px;
   }
@@ -86,6 +99,8 @@ h2 {
     }
   }
 }
+
+
 @media (min-width:768px) {
   .flex__inner {
     display: flex;
@@ -122,8 +137,6 @@ h2 {
   .item {
     &__inner {
       margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
       gap: 40px 20px;
     }
   

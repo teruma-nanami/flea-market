@@ -16,24 +16,61 @@
   <hr>
   <div class="container">
     <div id="all-products" class="item__inner active">
-      @foreach ($items as $item)
-        <div class="item__card">
-          <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
-          <p>{{ $item->title }}</p>
-          @if ($item->is_sold)
-            <div class="item__sold"><span>SOLD</span></div>
-          @endif
-        </div>
-      @endforeach
-    </div>
-    @auth
-      <div id="favorite-products" class="item__inner">
-        @foreach ($favorites as $item)
+      @if ($query)
+        @if ($items->isEmpty())
+          <p>結果が見つかりませんでした。</p>
+        @else
+          @foreach ($items as $item)
+            <div class="item__card">
+              <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}"
+                  alt="{{ $item->title }}"></a>
+              <p>{{ $item->title }}</p>
+              @if ($item->is_sold)
+                <div class="item__sold"><span>SOLD</span></div>
+              @endif
+            </div>
+          @endforeach
+        @endif
+      @else
+        @foreach ($items as $item)
           <div class="item__card">
             <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
             <p>{{ $item->title }}</p>
+            @if ($item->is_sold)
+              <div class="item__sold"><span>SOLD</span></div>
+            @endif
           </div>
         @endforeach
+      @endif
+    </div>
+    @auth
+      <div id="favorite-products" class="item__inner">
+        @if ($query)
+          @if ($favorites->isEmpty())
+            <p>結果が見つかりませんでした。</p>
+          @else
+            @foreach ($favorites as $item)
+              <div class="item__card"> <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}"
+                    alt="{{ $item->title }}"></a>
+                <p>{{ $item->title }}</p>
+                @if ($item->is_sold)
+                  <div class="item__sold"><span>SOLD</span></div>
+                @endif
+              </div>
+            @endforeach
+          @endif
+        @else
+          @foreach ($favorites as $item)
+            <div class="item__card">
+              <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}"
+                  alt="{{ $item->title }}"></a>
+              <p>{{ $item->title }}</p>
+              @if ($item->is_sold)
+                <div class="item__sold"><span>SOLD</span></div>
+              @endif
+            </div>
+          @endforeach
+        @endif
       </div>
     @endauth
   </div>

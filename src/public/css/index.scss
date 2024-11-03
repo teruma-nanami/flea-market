@@ -4,6 +4,9 @@
   max-width: 680px;
   margin: 0 auto;
   padding: 0 5px;
+  .active {
+    display: flex;
+  }
 }
 
 h2 {
@@ -15,12 +18,18 @@ h2 {
 .tab {
   &__inner {
     margin-top: 60px;
+
+    .active {
+      display: inline-block;
+      color: $base-color;
+    }
   }
 
   &__button {
     appearance: none;
     background-color: #fff;
     font-size: 16px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     margin: 8px 16px;
@@ -30,7 +39,7 @@ h2 {
 .item {
   &__inner {
     margin-top: 40px;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -67,6 +76,7 @@ h2 {
     text-align: center;
     line-height: 0;
     transform: rotate(-45deg);
+
     span {
       position: absolute;
       top: 45px;
@@ -150,8 +160,6 @@ h2 {
   .item {
     &__inner {
       margin: 40px auto;
-      display: flex;
-      flex-wrap: wrap;
       justify-content: flex-start;
       gap: 40px;
     }
