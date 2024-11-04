@@ -37,7 +37,8 @@
           <option value="">状態を選択してください</option>
           <option value="新品">新品</option>
           <option value="未使用に近い">未使用に近い</option>
-          <option value="目立った汚れなし">目立った汚れなし</option>
+          <option value="目立った傷や汚れなし">目立った汚れなし</option>
+          <option value="やや傷や汚れあり">やや傷や汚れあり</option>
           <option value="傷や汚れあり">傷や汚れあり</option>
           <option value="状態が悪い">状態が悪い</option>
         </select>

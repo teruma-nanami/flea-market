@@ -1,7 +1,7 @@
 .container {
   max-width: 680px;
-  margin: 0 auto;
   padding: 0 5px;
+  margin: auto;
 }
 .container .active {
   display: flex;

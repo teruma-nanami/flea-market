@@ -23,11 +23,18 @@ h3 {
   flex-wrap: wrap;
 }
 
+.img__inner {
+  margin: 0 auto;
+}
 .img__inner img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.desc__inner {
+  margin: 0 auto;
 }
 
 .favorite__icon,
@@ -60,13 +67,17 @@ tr {
 
 th, td {
   font-weight: normal;
-  padding: 0 24px;
-  margin: 20px 0;
+  margin: 0 4px;
+  display: inline-block;
 }
 
-.category__table-text {
-  background-color: #d5d5d5;
+.category__table-text p {
+  padding: 4px 12px;
+  background-color: #fff;
+  border: 1px solid #ff5555;
+  color: #ff5555;
   border-radius: 20px;
+  display: inline;
 }
 
 .comment__inner {
@@ -170,7 +181,6 @@ th, td {
   }
   .desc__inner th {
     font-weight: normal;
-    padding-right: 60px;
     font-size: 24px;
   }
   .desc__inner td {
