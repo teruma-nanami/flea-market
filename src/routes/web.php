@@ -29,7 +29,7 @@ Fortify::verifyEmailView(function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 	$request->fulfill();
-	return redirect('/');
+	return redirect('/profile/edit');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/resend', function (Request $request) {
@@ -55,6 +55,7 @@ Route::post('/logout', function () {
 })->name('logout');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+	Route::get('/profile/edit', [HomeController::class, 'profileEdit'])->name('profile.edit');
 	Route::get('/profile/', [HomeController::class, 'profileShow'])->name('profile.show');
 	Route::patch('/profile/update', [HomeController::class, 'profileUpdate'])->name('profile.update');
 	Route::get('/item', [ItemController::class, 'index'])->name('home');
