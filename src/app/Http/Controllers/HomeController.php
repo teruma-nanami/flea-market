@@ -64,6 +64,11 @@ class HomeController extends Controller
 		return view('profile');
 	}
 
+	public function profileEdit()
+	{
+		return view('edit');
+	}
+
 	public function profileUpdate(HomeRequest $request)
 	{
 		$user = Auth::user();

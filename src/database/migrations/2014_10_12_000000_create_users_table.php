@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
 			$table->string('password');
 			$table->string('password_digest');
 			$table->string('image_url');
-			// $table->boolean('profile_completed')->default(false);
 			$table->rememberToken();
 			$table->timestamps();
 		});

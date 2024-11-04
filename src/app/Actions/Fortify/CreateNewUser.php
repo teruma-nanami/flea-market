@@ -21,10 +21,6 @@ class CreateNewUser implements CreatesNewUsers
 	{
 		Validator::make($input, [
 			'name' => ['required', 'string', 'max:191'],
-			'post_code' => ['required', 'string', 'max:10'],
-			'address' => ['required', 'string', 'max:191'],
-			'buiiding' => ['nullable', 'string', 'max:191'],
-			'image_url' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'string', 'email', 'max:191',	Rule::unique(User::class),],
 			'password' => ['required', 'string', 'min:8', 'max:191', 'confirmed'],
 		])->validate();
@@ -35,8 +31,11 @@ class CreateNewUser implements CreatesNewUsers
 			'password' => Hash::make($input['password']),
 			'password_digest' => Hash::make($input['password']),
 			'email_verified_at' => null,
+			'post_code' => '',
+			'address' => '',
+			'building' => '',
 			'image_url' => 'storage/default/default.png',
-			// 'profile_completed' => false,
+			'profile_completed' => false,
 		]);
 	}
 }
