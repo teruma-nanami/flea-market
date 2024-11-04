@@ -35,7 +35,6 @@ class CreateNewUser implements CreatesNewUsers
 			'address' => '',
 			'building' => '',
 			'image_url' => 'storage/default/default.png',
-			'profile_completed' => false,
 		]);
 	}
 }
