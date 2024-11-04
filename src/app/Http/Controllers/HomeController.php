@@ -77,6 +77,7 @@ class HomeController extends Controller
 			$user->image_url = '/storage/' . $imagePath;
 		}
 
+		// $user->profile_completed = true;
 		$user->save();
 
 		return redirect()->route('profile.show')->with('success', 'プロフィールが更新されました。');

@@ -37,6 +37,7 @@ h2 {
   display: none;
   flex-wrap: wrap;
   justify-content: flex-start;
+  gap: 20px;
 }
 .item__card {
   width: 180px;

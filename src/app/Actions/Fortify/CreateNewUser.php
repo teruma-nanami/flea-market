@@ -35,7 +35,8 @@ class CreateNewUser implements CreatesNewUsers
 			'password' => Hash::make($input['password']),
 			'password_digest' => Hash::make($input['password']),
 			'email_verified_at' => null,
-			'image_url' => 'storage/default/default.png'
+			'image_url' => 'storage/default/default.png',
+			// 'profile_completed' => false,
 		]);
 	}
 }

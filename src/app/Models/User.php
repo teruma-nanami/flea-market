@@ -27,6 +27,7 @@ class User extends Authenticatable
 		'password',
 		'password_digest',
 		'email_verified_at',
+		// 'profile_completed',
 	];
 
 	/**

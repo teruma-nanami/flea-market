@@ -37,16 +37,21 @@
             <li>
               <form action="/logout" method="POST">
                 @csrf
-                <button type="submit" class="logout__button">ログアウト</button>
+                <button type="submit" class="logout__button"> <i class="bi bi-box-arrow-right"></i> ログアウト</button>
               </form>
             </li>
           @else
             <li>
-              <a href="{{ route('login') }}" class="login__button">ログイン</a>
+              <a href="{{ route('login') }}" class="login__button"> <i class="bi bi-box-arrow-in-right"></i> ログイン</a>
             </li>
           @endif
-          <li><a href="{{ route('profile.mypage') }}" class="mypage__button">マイページ</a></li>
-          <li><a href="{{ route('items.create') }}" class="purchace__button">出品</a></li>
+          <li>
+            <a href="{{ route('profile.mypage') }}" class="mypage__button"> <i class="bi bi-person-circle"></i>
+              マイページ</a>
+          </li>
+          <li>
+            <a href="{{ route('items.create') }}" class="purchace__button"> <i class="bi bi-bag-fill"></i> 出品</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -75,6 +80,6 @@
   </main>
   <script src="{{ asset('js/tab.js') }}"></script>
   <script src="{{ asset('js/purchase.js') }}"></script>
-</body>
+  </ </body>
 
 </html>
