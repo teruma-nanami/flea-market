@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +14,10 @@
 
   h1 {
     text-align: center;
+  }
+
+  img:hover {
+    opacity: .75;
   }
 
   &__search {
@@ -32,11 +38,17 @@
       color: #fff;
       font-size: 20px;
       margin: 8px 0 0 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      color: $base-color;
+      transition: .2s;
     }
   }
 
   &__nav {
     position: fixed;
+    z-index: 999;
     bottom: 0;
     width: 100%;
 
@@ -53,6 +65,48 @@
       padding: 20px 0;
       border-left: #000 1px solid;
       font-size: 12px;
+      background-color: #fff;
+
+
+      .logout__button {
+        border: none;
+        background-color: #fff;
+        color: #000;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .logout__button:hover {
+        color: $base-color;
+      }
+      .login__button {
+        border: none;
+        background-color: #fff;
+        color: #000;
+        font-size: 18px;
+      }
+      .login__button:hover {
+        color: $base-color;
+      }
+      .mypage__button {
+        border: none;
+        background-color: #fff;
+        color: #000;
+        font-size: 18px;
+      }
+      .mypage__button:hover {
+        color: $base-color;
+      }
+      .purchace__button {
+        border: none;
+        background-color: #fff;
+        border-radius: 4px;
+        color: #000;
+        font-size: 18px;
+        padding: 4px 20px;
+      }
+      .purchace__button:hover {
+        color: $base-color;
+      }
     }
   }
 }
@@ -91,7 +145,7 @@
 
       input {
         padding: 10px;
-        width: 90%;
+        width: 75%;
       }
     }
 
@@ -108,6 +162,7 @@
       li {
         display: inline-block;
         margin: 0 10px;
+        background-color: #000;
 
         .logout__button {
           border: none;
@@ -138,6 +193,10 @@
           color: #000;
           font-size: 18px;
           padding: 4px 20px;
+        }
+        .purchace__button:hover {
+          color: #fff;
+          background-color: $base-color;
         }
       }
     }

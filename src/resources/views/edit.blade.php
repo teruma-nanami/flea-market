@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.application')
 
 
 @section('css')
@@ -7,14 +7,14 @@
 
 @section('content')
   <div class="container">
-    <h2>プロフィール更新</h2>
+    <h2>プロフィール設定</h2>
     <form action="{{ route('profile.update') }}" method="POST" class="form" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
 
       <div class="flex__inner">
         <div class="img__inner">
-            <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
+            <img src="/{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
         </div>
         <div class="form__inner-text">
             <label for="image_url" class="form__file">
@@ -46,7 +46,7 @@
         <input type="text" name="building" id="building" value="{{ old('building', auth()->user()->building) }}">
       </div>
       <div class="form__button">
-        <button type="submit">更新する</button>
+        <button type="submit">設定する</button>
       </div>
     </form>
   </div>

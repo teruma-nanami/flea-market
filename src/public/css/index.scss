@@ -2,8 +2,8 @@
 
 .container {
   max-width: 680px;
-  margin: 0 auto;
   padding: 0 5px;
+  margin: auto;
   .active {
     display: flex;
   }
@@ -42,6 +42,7 @@ h2 {
     display: none;
     flex-wrap: wrap;
     justify-content: flex-start;
+    gap: 20px;
   }
 
   &__card {
