@@ -104,7 +104,7 @@ fakerにて作成したパスワードはすべて「password」に統一され�
 
 
 ## ER図
-![ER図](https://github.com/teruma-nanami/rese/blob/main/docs/diagrams/rese.png)
+![ER図](https://github.com/teruma-nanami/flea-market/blob/main/docs/diagrams/flea-market.png)
 
 ## 環境構築
 
