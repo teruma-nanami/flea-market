@@ -76,6 +76,7 @@ h2 {
 }
 .item__card {
   width: 180px;
+  position: relative;
 }
 .item__card img {
   width: 100%;
@@ -88,6 +89,28 @@ h2 {
 }
 .item__card p {
   margin-bottom: 35px;
+}
+.item__sold {
+  position: absolute;
+  top: -9px;
+  left: -39px;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid #ce0000;
+  color: white;
+  text-align: center;
+  line-height: 0;
+  transform: rotate(-45deg);
+}
+.item__sold span {
+  position: absolute;
+  top: 45px;
+  right: -20px;
+  transform: rotate(0deg);
+  font-size: 14px;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {

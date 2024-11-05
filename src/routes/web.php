@@ -56,15 +56,15 @@ Route::post('/logout', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/profile/edit', [HomeController::class, 'profileEdit'])->name('profile.edit');
-	Route::get('/profile/', [HomeController::class, 'profileShow'])->name('profile.show');
+	Route::get('/mypage/profile/', [HomeController::class, 'profileShow'])->name('profile.show');
 	Route::patch('/profile/update', [HomeController::class, 'profileUpdate'])->name('profile.update');
 	Route::get('/item', [ItemController::class, 'index'])->name('home');
-	Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+	Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
 	Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 	Route::get('/purchase/{id}', [ItemController::class, 'show'])->name('purchase.show');
 	Route::post('/purchase/{id}', [ItemController::class, 'purchace'])->name('purchase.store');
 	Route::get('/mypage', [HomeController::class, 'mypage'])->name('profile.mypage');
-	Route::get('/address/edit/{id}', [HomeController::class, 'addressEdit'])->name('address.edit');
+	Route::get('/purchase/address/{id}', [HomeController::class, 'addressEdit'])->name('address.edit');
 	Route::patch('/address/update/{id}', [HomeController::class, 'addressUpdate'])->name('address.update');
 	Route::post('/items/{item}/comments', [CommentController::class, 'store'])->name('comments.store');
 	Route::post('/items/{item}/favorite', [FavoriteController::class, 'toggle'])->name('favorite.toggle');

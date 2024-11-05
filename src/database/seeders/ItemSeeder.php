@@ -16,7 +16,7 @@ class ItemSeeder extends Seeder
 	public function run()
 	{
 		$item1 =Item::create([
-			'user_id' => 1,
+			'user_id' => 11,
 			'title' => '腕時計',
 			'description' => 'スタイリッシュなデザインのメンズ腕時計',
 			'price' => 15000,
@@ -27,7 +27,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item2 =Item::create([
-			'user_id' => 1,
+			'user_id' => 12,
 			'title' => 'HDD',
 			'description' => '高速で信頼性の高いハードディスク',
 			'price' => 5000,
@@ -38,7 +38,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item3 =Item::create([
-			'user_id' => 1,
+			'user_id' => 13,
 			'title' => '玉ねぎ3束',
 			'description' => '新鮮な玉ねぎ3束のセット',
 			'price' => 300,
@@ -49,7 +49,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item4 = Item::create([
-			'user_id' => 1,
+			'user_id' => 14,
 			'title' => '革靴',
 			'description' => 'クラシックなデザインの革靴',
 			'price' => 4000,
@@ -60,7 +60,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item5 = Item::create([
-			'user_id' => 1,
+			'user_id' => 15,
 			'title' => 'ノートPC',
 			'description' => '高性能なノートパソコン',
 			'price' => 45000,
@@ -71,7 +71,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item6 = Item::create([
-			'user_id' => 1,
+			'user_id' => 16,
 			'title' => 'マイク',
 			'description' => '高音質のレコーディング用マイク',
 			'price' => 8000,
@@ -82,7 +82,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item7 = Item::create([
-			'user_id' => 1,
+			'user_id' => 17,
 			'title' => 'ショルダーバッグ',
 			'description' => 'おしゃれなショルダーバッグ',
 			'price' => 3500,
@@ -93,7 +93,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item8 = Item::create([
-			'user_id' => 1,
+			'user_id' => 18,
 			'title' => 'タンブラー',
 			'description' => '使いやすいタンブラー',
 			'price' => 500,
@@ -104,7 +104,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item9 = Item::create([
-			'user_id' => 1,
+			'user_id' => 19,
 			'title' => 'コーヒーミル',
 			'description' => '手動のコーヒーミル',
 			'price' => 4000,
@@ -115,7 +115,7 @@ class ItemSeeder extends Seeder
 			'updated_at' => now(),
 		]);
 		$item10 = Item::create([
-			'user_id' => 1,
+			'user_id' => 20,
 			'title' => 'メイクセット',
 			'description' => '便利なメイクアップセット',
 			'price' => 2500,
