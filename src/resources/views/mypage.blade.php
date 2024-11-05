@@ -33,6 +33,9 @@
         <div class="item__card">
           <a href="{{ route('item.show', $item->id) }}"><img src="{{ $item->image_url }}" alt="{{ $item->title }}"></a>
           <p class="card-title">{{ $item->title }}</p>
+          @if ($item->is_sold)
+            <div class="item__sold"><span>SOLD</span></div>
+          @endif
         </div>
       @endforeach
     </div>

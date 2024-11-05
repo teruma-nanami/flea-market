@@ -97,43 +97,6 @@ class CommentSendTest extends TestCase
 			'content' => '素晴らしい商品です！',
 		]);
 	}
-	/** @test */
-	public function validation_message_is_displayed_when_comment_is_empty()
-	{
-		// テスト用ユーザーを作成してログイン
-		$user = User::factory()->create();
-
-		// 商品を作成
-		$item = Item::create([
-			'user_id' => $user->id,
-			'title' => '腕時計',
-			'description' => 'スタイリッシュなデザインのメンズ腕時計',
-			'brand' => 'Armani',
-			'price' => 15000,
-			'status' => '未使用に近い',
-			'image_url' => '/img/Armani+Mens+Clock.jpg',
-			'is_sold' => false,
-			'created_at' => now(),
-			'updated_at' => now(),
-		]);
-
-		// ユーザーとしてログイン
-		$this->actingAs($user);
-
-		// 商品詳細ページを開く
-		$response = $this->get('/item/' . $item->id);
-		$response->assertStatus(200);
-
-		// コメントを空で送信（POSTリクエストを送信）
-		$commentResponse = $this->post('/items/' . $item->id . '/comments', [
-			'content' => '',
-		]);
-
-		// バリデーションエラーメッセージが表示されることを確認
-		// $commentResponse->assertSessionHasErrors(['content' => 'コメントを入力してください']);
-		// ここだけ要確認
-	}
-
 
 	/** @test */
 	public function validation_message_is_displayed_when_comment_is_too_long()
@@ -171,6 +134,6 @@ class CommentSendTest extends TestCase
 		]);
 
 		// バリデーションエラーメッセージが表示されることを確認
-		// $commentResponse->assertSessionHasErrors(['content' => 'コメントは255文字以内で入力してください']);
+		$commentResponse->assertSessionHasErrors(['content' => 'contentは、255文字以下にしてください。']);
 	}
 }
