@@ -1,11 +1,11 @@
-# rese
-飲食店管理システム
+# flea-market
+メルカリ風 フリマアプリ
 
 ## 作成した目的
 模擬案件を通して実践に近い開発経験をつむ
 
 ## アプリケーションURL
-https://runcha.xsrv.jp/  
+https://runcha.xsrv.jp/
 fakerにて作成したパスワードはすべて「password」に統一されています
 
 ## 機能一覧
@@ -14,18 +14,12 @@ fakerにて作成したパスワードはすべて「password」に統一され�
 - Remember Me機能
 - メール認証
 - パスワード再設定機能
-- ユーザー機能一覧
-    - 飲食店予約機能
-    - 飲食店お気に入り登録・解除機能
-    - 飲食店レビュー機能
-- オーナー機能一覧
-    - 予約管理機能
-    - レストラン新規追加機能
-    - レストラン編集・削除機能
-- 管理者機能一覧
-    - オーナー役割変更機能
-    - レストラン新規追加機能
-    - レストラン編集・削除機能
+- 商品出品
+- 商品購入
+- 住所登録
+- 住所変更
+- コメント投稿機能
+- お気に入り登録/解除
 
 ## 使用技術(実行環境)
 
@@ -35,65 +29,59 @@ fakerにて作成したパスワードはすべて「password」に統一され�
 
 ## テーブル設計
 ### ユーザーテーブル
-| ユーザー | users |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
-| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
-| id | bigint unsigned | ◯ |  |  |  |
-| name | varchar(255) |  |  | ◯ |  |
-| email | varchar(255) |  | ◯ | ◯ |  |
-| email_verified_at | timestamp |  |  |  |  |
-| phone_number | varchar(255) |  |  |  |  |
-| password | varchar(255) |  |  | ◯ |  |
-| password_digest | varchar(255) |  |  | ◯ |  |
-| role | enum('customer', 'restaurant_owner', 'admin') |  |  | ◯ |  |
-| remember_token | varchar(100) |  |  |  |  |
-| created_at | timestamp |  |  | ◯ |  |
-| updated_at | timestamp |  |  | ◯ |  |
+| カラム名             | データ型         | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
+|----------------------|------------------|-------------|------------|----------|-------------|
+| ID                   | bigint unsigned  | ◯           |            | ◯        |             |
+| name                 | varchar(255)     |             |            | ◯        |             |
+| post_code            | varchar(255)     |             |            | ◯        |             |
+| address              | varchar(255)     |             |            | ◯        |             |
+| building             | varchar(255)     |             |            |          |             |
+| email                | varchar(255)     |             | ◯          | ◯        |             |
+| email_verified_at    | varchar(255)     |             |            |          |             |
+| password             | varchar(255)     |             |            | ◯        |             |
+| password_digest      | varchar(255)     |             |            | ◯        |             |
+| image_url            | varchar(255)     |             |            | ◯        |             |
+| remember_token       | varchar(255)     |             |            |          |             |
+| created_at           | timestamp        |             |            |          |             |
+| updated_at           | timestamp        |             |            |          |             |
 
 
-### レストランテーブル
-| レストラン | restaurants |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
-| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
-| id | bigint unsigned | ◯ |  |  |  |
-| name | varchar(255) |  |  | ◯ |  |
-| address | varchar(255) |  |  | ◯ |  |
-| phone_number | varchar(255) |  |  | ◯ |  |
-| image_url | varchar(255) |  |  |  |  |
-| email | varchar(255) |  |  |  |  |
-| area | varchar(255) |  |  | ◯ |  |
-| cuisine_type | varchar(255) |  |  | ◯ |  |
-| owner_id | bigint unsigned |  |  | ◯ | ◯ (users.id) |
-| created_at | timestamp |  |  | ◯ |  |
-| updated_at | timestamp |  |  | ◯ |  |
 
-### 予約テーブル
-| 予約 | reservations |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
-| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
-| id | bigint unsigned | ◯ |  |  |  |
-| user_id | bigint unsigned |  |  | ◯ | ◯ (users.id) |
-| restaurant_id | bigint unsigned |  |  | ◯ | ◯ (restaurants.id) |
-| reservation_date | date |  |  | ◯ |  |
-| reservation_time | time |  |  | ◯ |  |
-| number_of_people | integer |  |  | ◯ |  |
-| special_requests | text |  |  |  |  |
-| status | enum('pending', 'confirmed', 'completed', 'cancelled') |  |  | ◯ |  |
-| created_at | timestamp |  |  | ◯ |  |
-| updated_at | timestamp |  |  | ◯ |  |
+### アイテムテーブル
+| カラム名       | データ型             | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY      |
+|----------------|----------------------|-------------|------------|----------|------------------|
+| ID             | bigint unsigned      | ◯           |            | ◯        |                  |
+| user_id        | bigint unsigned      |             |            | ◯        | ◯ (users(id))    |
+| title          | varchar(255)         |             |            | ◯        |                  |
+| description    | TEXT                 |             |            | ◯        |                  |
+| status         | ENUM                 |             |            | ◯        |                  |
+| price          | decimal(10,2)        |             |            | ◯        |                  |
+| image_url      | varchar(255)         |             |            | ◯        |                  |
+| is_sold        | BOOLEAN              |             |            | ◯        |                  |
+| buyer_id       | bigint unsigned      |             |            | ◯        | ◯ (users(id))    |
+| created_at     | timestamp            |             |            |          |                  |
+| updated_at     | timestamp            |             |            |          |                  |
 
-### レビューテーブル
-| レビュー | reviews |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
-| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
-| id | bigint unsigned | ◯ |  |  |  |
-| user_id | bigint unsigned |  |  | ◯ | ◯ (users.id) |
-| restaurant_id | bigint unsigned |  |  | ◯ | ◯ (restaurants.id) |
-| rating | integer |  |  | ◯ |  |
-| comment | text |  |  |  |  |
-| review_date | date |  |  | ◯ |  |
-| created_at | timestamp |  |  | ◯ |  |
-| updated_at | timestamp |  |  | ◯ |  |
+
+### カテゴリーテーブル
+| カラム名    | データ型   | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
+|-------------|------------|-------------|------------|----------|-------------|
+| ID          | bigint     | ◯           |            | ◯        |             |
+| name        | string     |             |            | ◯        |             |
+| created_at  | timestamp  |             |            |          |             |
+| updated_at  | timestamp  |             |            |          |             |
+
+
+### コメントテーブル
+| カラム名    | データ型         | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY     |
+|-------------|------------------|-------------|------------|----------|-----------------|
+| ID          | bigint unsigned  | ◯           |            | ◯        |                 |
+| user_id     | bigint unsigned  |             |            | ◯        | ◯ (users(id))   |
+| item_id     | bigint unsigned  |             |            | ◯        | ◯ (items(id))   |
+| content     | TEXT             |             |            | ◯        |                 |
+| created_at  | timestamp        |             |            |          |                 |
+| updated_at  | timestamp        |             |            |          |                 |
+
 
 ### お気に入りテーブル
 | お気に入り | favorites |  |  |  |  |
@@ -101,9 +89,18 @@ fakerにて作成したパスワードはすべて「password」に統一され�
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
 | id | bigint unsigned | ◯ |  |  |  |
 | user_id | bigint unsigned |  |  | ◯ | ◯ (users.id) |
-| restaurant_id | bigint unsigned |  |  | ◯ | ◯ (restaurants.id) |
+| item_id | bigint unsigned |  |  | ◯ | ◯ (items.id) |
 | created_at | timestamp |  |  | ◯ |  |
 | updated_at | timestamp |  |  | ◯ |  |
+
+### カテゴリーアイテムテーブル
+| カラム名       | データ型   | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY          |
+|----------------|------------|-------------|------------|----------|----------------------|
+| ID             | bigint     | ◯           |            | ◯        |                      |
+| item_id        | bigint     |             |            | ◯        | ◯ (items(id))        |
+| category_id    | bigint     |             |            | ◯        | ◯ (categories(id))   |
+| created_at     | timestamp  |             |            |          |                      |
+| updated_at     | timestamp  |             |            |          |                      |
 
 
 ## ER図
@@ -113,7 +110,7 @@ fakerにて作成したパスワードはすべて「password」に統一され�
 
 ### Dockerビルド
 
-1. git clone git@github.com:teruma-nanami/rese
+1. git clone git@github.com:teruma-nanami/flea-market
 1. docker compose up -d --build
 
 ### Laravel環境構築
@@ -125,6 +122,14 @@ fakerにて作成したパスワードはすべて「password」に統一され�
 1. php artisan migrate
 1. php artisan db:seed
 1. php artisan storage:link
+
+### 単体テスト
+
+1. php artisan test
+
+テスト後にはシードデータがなくなってしまうため、以下のコマンドを入力してください。
+1. php artisan migrate:fresh
+1. php artisan db:seed
 
 ### mailhogの環境構築
 .envファイルを以下のように変更してください。
