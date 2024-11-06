@@ -35,7 +35,7 @@ class AddressChangeTest extends TestCase
     $this->actingAs($user);
 
     // 住所変更ページに遷移
-    $addressEditResponse = $this->get('/address/edit/' . $user->id);
+    $addressEditResponse = $this->get('/purchase/address/' . $user->id);
     $addressEditResponse->assertStatus(200);
 
     // 住所変更ページで住所を更新（PATCHリクエストを送信）
