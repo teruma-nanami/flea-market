@@ -5,7 +5,7 @@
 模擬案件を通して実践に近い開発経験をつむ
 
 ## アプリケーションURL
-https://runcha.xsrv.jp/
+https://flea-market.nanami-teruma.com/
 fakerにて作成したパスワードはすべて「password」に統一されています
 
 ## 機能一覧
