@@ -36,7 +36,7 @@ class ItemController extends Controller
 		]);
 
 		$item->categories()->attach($request->category_ids);
-		
+
 		return redirect()->route('items.completed');
 	}
 
@@ -57,8 +57,6 @@ class ItemController extends Controller
 		$item->is_sold = true;
 		$item->buyer_id = Auth::id();
 		$item->save();
-
-		// 購入処理をここに追加（例：購入履歴の保存など）
 
 		return redirect()->route('purchase.thanks');
 	}

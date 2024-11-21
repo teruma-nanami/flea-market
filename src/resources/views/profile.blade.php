@@ -14,15 +14,15 @@
 
       <div class="flex__inner">
         <div class="img__inner">
-            <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
+          <img src="{{ auth()->user()->image_url }}" alt="{{ auth()->user()->name }}">
         </div>
         <div class="form__inner-text">
-            <label for="image_url" class="form__file">
-                画像を選択する
-            </label>
-            <input type="file" name="image_url" id="image_url" hidden>
+          <label for="image_url" class="form__file">
+            画像を選択する
+          </label>
+          <input type="file" name="image_url" id="image_url" hidden>
         </div>
-    </div>
+      </div>
 
       <div class="form__inner-text">
         <label for="name">名前</label>

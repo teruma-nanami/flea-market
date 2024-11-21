@@ -17,7 +17,6 @@ class HomeController extends Controller
 		$query = null;
 
 		return view('index', compact('items', 'favorites', 'query'));
-		// return view('index', compact('items', 'favorites'));
 	}
 	public function search(SearchRequest $request)
 	{
